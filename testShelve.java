@@ -10,9 +10,7 @@ public class testShelve {
         Book book = new Book();
         book.height = 10;
         book.depth = 9;
-        Shelf shelf = new Shelf();
-        shelf.height = 11;
-        shelf.depth = 10;
+        Shelf shelf = new Shelf(20,11,10);
         assertTrue(shelf.bookCanFit(book));
     }
 
@@ -21,9 +19,7 @@ public class testShelve {
         Book book = new Book();
         book.height = 100;
         book.depth = 9;
-        Shelf shelf = new Shelf();
-        shelf.height = 11;
-        shelf.depth = 10;
+        Shelf shelf = new Shelf(20,11,10);
         assertFalse(shelf.bookCanFit(book));
     }
 
@@ -32,9 +28,8 @@ public class testShelve {
         Book book = new Book();
         book.height = 10;
         book.depth = 90;
-        Shelf shelf = new Shelf();
-        shelf.height = 11;
-        shelf.depth = 10;
+        Shelf shelf = new Shelf(20,11,10);
+      
         assertFalse(shelf.bookCanFit(book));
     }
 

@@ -1,8 +1,9 @@
 public class Shelf {
-    public float width;
-    public float height;
-    public float depth;
-    public float availableWidth;
+    private float width;
+    private float height;
+    private float depth;
+    private float availableWidth;
+
 
     public Shelf(){
 
@@ -24,6 +25,6 @@ public class Shelf {
     }
 
     public void addBookToShelf(Book book){
-        
+
     }
 }
