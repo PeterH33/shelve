@@ -7,27 +7,21 @@ public class testShelve {
     //Note, need to test and retrieve times for books n= 35,000 -> 1,500,000
     @Test
     public void testBookCanFit() {
-        Book book = new Book();
-        book.height = 10;
-        book.depth = 9;
+        Book book = new Book("", 10, 1, 9);
         Shelf shelf = new Shelf(20,11,10);
         assertTrue(shelf.bookCanFit(book));
     }
 
     @Test
     public void testBookCanNotFitHeight() {
-        Book book = new Book();
-        book.height = 100;
-        book.depth = 9;
+        Book book = new Book("", 100, 1, 9);
         Shelf shelf = new Shelf(20,11,10);
         assertFalse(shelf.bookCanFit(book));
     }
 
     @Test
     public void testBookCanNotFitDepth() {
-        Book book = new Book();
-        book.height = 10;
-        book.depth = 90;
+        Book book = new Book("", 10, 1, 90);
         Shelf shelf = new Shelf(20,11,10);
       
         assertFalse(shelf.bookCanFit(book));

@@ -17,11 +17,11 @@ public class Shelf {
     }
 
     public boolean bookCanFit(Book book){
-        return (book.height <= height && book.depth <= depth);
+        return (book.getHeight() <= height && book.getDepth() <= depth);
     }
 
     public boolean spaceAvailableForBook(Book book){
-        return (book.width <= availableWidth);
+        return (book.getWidth() <= availableWidth);
     }
 
     public void addBookToShelf(Book book){
