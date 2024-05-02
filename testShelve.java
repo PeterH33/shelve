@@ -1,3 +1,4 @@
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -42,5 +43,14 @@ public class testShelve{
         Book book = new Book("name", 10, 10, 10);
         Shelf shelf = new Shelf(100, 20, 20);
         assertTrue(shelf.spaceAvailableForBook(book));
+    }
+
+    @Test
+    public void testAddNode(){
+        DLL<Integer> dll = new DLL<>();
+        dll.add(1);
+        dll.add(23);
+        assertTrue(dll.getTail().getValue() == 23);
+        assertTrue(dll.getHead().getValue() == 1);
     }
 }
