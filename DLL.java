@@ -33,9 +33,20 @@ public class DLL<T> {
         size++;
     }
 
+    public void printAll(){
+        Node<T> tempNode = head;
+        for (int i = 0; i < size; i++){
+            System.out.print(tempNode.toString() + ", ");
+            tempNode = tempNode.getNext();
+        }
+        System.out.println("");
+    }
+
+    /**
+     * Sort this List in place using merge sort
+     */
     public void sort(){
-        // TODO implement merge-Sort here
-        throw new UnsupportedOperationException("Unimplemented method 'sort'");
+        head = mergeSort(head);
     }
 
     public Node<T> findNode(Node<T> node){
@@ -43,4 +54,64 @@ public class DLL<T> {
         //Then perform binary search
         throw new UnsupportedOperationException("Unimplemented method 'findNode'");
     }
+
+    //*************************************** */
+    //Merge sort methods here
+    private Node<T> split(Node<T> head)
+    {
+        Node<T> fast = head, slow = head;
+        while (fast.getNext() != null
+               && fast.getNext().getNext() != null) {
+            fast = fast.getNext().getNext();
+            slow = slow.getNext();
+        }
+        Node<T> temp = slow.getNext();
+        slow.setNext(null);
+        return temp;
+    }
+ 
+    private Node<T> mergeSort(Node<T> node)
+    {
+        if (node == null || node.getNext() == null) {
+            return node;
+        }
+        Node<T> second = split(node);
+ 
+        // Recur for left and right halves
+        node = mergeSort(node);
+        second = mergeSort(second);
+ 
+        // Merge the two sorted halves
+        return merge(node, second);
+    }
+ 
+    // Function to merge two linked lists
+    private Node<T> merge(Node<T> first, Node<T> second)
+    {
+        // If first linked list is empty
+        if (first == null) {
+            return second;
+        }
+ 
+        // If second linked list is empty
+        if (second == null) {
+            return first;
+        }
+ 
+        // Pick the smaller value
+        //TODO: right here is where the comparator interface probly needs to go, I am going to test first with a simple string comparison
+        if (first.toString().compareTo(second.toString()) < 0) {
+            first.setNext(merge(first.getNext(), second));
+            first.getNext().setPreviousNode(first);
+            first.setPreviousNode(null);
+            return first;
+        }
+        else {
+            second.setNext( merge(first, second.getNext()));
+            second.getNext().setPreviousNode(second);
+            second.setPreviousNode(null);
+            return second;
+        }
+    }
+
 }
