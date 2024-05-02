@@ -1,10 +1,10 @@
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 public class testShelve {
+    //Note, need to test and retrieve times for books n= 35,000 -> 1,500,000
     @Test
     public void testBookCanFit() {
         Book book = new Book();

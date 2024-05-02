@@ -3,6 +3,10 @@ public class DLL<T> {
     private Node<T> tail = null;
     private int size = 0;
 
+    public boolean isEmpty(){
+        return size == 0;
+    }
+
     public Node<T> getHead() {
         return this.head;
     }
