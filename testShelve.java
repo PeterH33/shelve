@@ -54,6 +54,7 @@ public class testShelve {
         assertTrue(dll.getHead().getValue() == 1);
     }
 
+    //Test requires visual confirmation, refactor to be automated
     @Test
     public void testMergeSort() {
         System.out.println("Merge sort check of 100 random strings List before sort:");
