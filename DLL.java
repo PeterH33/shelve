@@ -11,9 +11,13 @@ public class DLL<T> {
         return this.head;
     }
 
+    
+
     public Node<T> getTail() {
         return this.tail;
     }
+
+    
 
     public int getSize() {
         return this.size;
@@ -38,6 +42,7 @@ public class DLL<T> {
     }
 
     public void printAll(){
+        if (head == null){ return; }
         Node<T> tempNode = head;
         for (int i = 0; i < size; i++){
             System.out.print(tempNode.toString() + ", ");
@@ -57,6 +62,36 @@ public class DLL<T> {
         // TODO this needs to be able to specify how we search for a node to retrieve it
         //Then perform binary search
         throw new UnsupportedOperationException("Unimplemented method 'findNode'");
+    }
+
+    /**
+     * Join this DLL with otherDLL in place adding other to the end of this DLL
+     * @param otherDll
+     */
+    public void joinWith(DLL<T> otherDll){
+        if (otherDll.head == null){
+            System.out.println("if");
+            //do nothing, no join to occur
+        }
+        else if( head == null){
+            System.out.println("else if");
+            // set the this head and tail to be otherDLL and then clear other
+            head = otherDll.head;
+            tail = otherDll.tail;
+            otherDll.head = null; 
+            otherDll.tail = null;
+            size += otherDll.size;
+        } else {
+            //join this.tail to other.head
+            tail.setNext(otherDll.getHead());
+            otherDll.head.setPreviousNode(tail);
+            //redefine the tail to be for this and other to null
+            tail = otherDll.tail;
+            size += otherDll.size;
+            otherDll.tail = null;
+            otherDll.head = null;
+            otherDll.size = 0;
+        }
     }
 
     //*************************************** */

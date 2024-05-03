@@ -64,4 +64,33 @@ public class testShelve {
         //sort books onto shelves
     }
 
+    //TODO: refactor for automation
+    @Test
+    public void testJoinWith(){
+        DLL<Integer> left = new DLL<Integer>();
+        DLL<Integer> right = new DLL<Integer>();
+        left.add(1);
+        left.add(2);
+        right.add(3);
+        right.add(4);
+        left.add(5);
+        left.joinWith(right);
+        System.out.println(left.getTail());
+        left.printAll();
+
+    }
+
+    @Test
+    public void testJoinWithHeadNull(){
+        DLL<Integer> left = new DLL<Integer>();
+        DLL<Integer> right = new DLL<Integer>();
+        right.add(3);
+        right.add(4);
+        left.joinWith(right);
+        System.out.println(left.getTail());
+        left.printAll();
+        System.out.println("Right: ");
+        right.printAll();
+        System.out.println("end Right");
+    }
 }
