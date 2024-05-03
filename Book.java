@@ -22,9 +22,10 @@ public class Book {
         return this.depth;
     }
 
-    public Book(){
-        //Just setting the default constructor up again, this works by defining everything as a 0 state or null
+    public String getTitle(){
+        return this.title;
     }
+
 
     public Book(String title, float height, float width, float depth){
         this.title = title;

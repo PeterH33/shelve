@@ -8,21 +8,21 @@ public class testShelve {
     @Test
     public void testBookCanFit() {
         Book book = new Book("", 10, 1, 9);
-        Shelf shelf = new Shelf(20,11,10);
+        Shelf shelf = new Shelf("A", 20,11,10);
         assertTrue(shelf.bookCanFit(book));
     }
 
     @Test
     public void testBookCanNotFitHeight() {
         Book book = new Book("", 100, 1, 9);
-        Shelf shelf = new Shelf(20,11,10);
+        Shelf shelf = new Shelf("a", 20,11,10);
         assertFalse(shelf.bookCanFit(book));
     }
 
     @Test
     public void testBookCanNotFitDepth() {
         Book book = new Book("", 10, 1, 90);
-        Shelf shelf = new Shelf(20,11,10);
+        Shelf shelf = new Shelf("a", 20,11,10);
       
         assertFalse(shelf.bookCanFit(book));
     }
@@ -30,7 +30,7 @@ public class testShelve {
     @Test
     public void testSpaceAvailibleBook() {
         Book book = new Book("name", 10, 10, 10);
-        Shelf shelf = new Shelf(100, 20, 20);
+        Shelf shelf = new Shelf("a", 100, 20, 20);
         assertTrue(shelf.spaceAvailableForBook(book));
     }
 
@@ -55,6 +55,13 @@ public class testShelve {
         dll.sort();
         System.out.println("After sorting");
         dll.printAll();
+    }
+
+    @Test
+    public void testShelving(){
+        //make library
+        //create books
+        //sort books onto shelves
     }
 
 }
