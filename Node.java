@@ -1,6 +1,8 @@
 // To create an abstration of the double and single linked list nodes, I am simply creating a double linked node, but when it is used as a SLL node, all of the prev nodes will simply remain as null. This is a minor increace in memory useage for a reduction in overall code and reduction of repeated code.
 /**
- * Node Class for use in data structures, organizaed to allow for use in multiple structures. 
+ * Node Class for use in data structures, organizaed to allow for use in
+ * multiple structures.
+ * 
  * @author Peter Hartnett
  */
 public class Node<T> {
@@ -10,6 +12,7 @@ public class Node<T> {
 
     /**
      * Simple initialization with next and prev nodes set to NULL
+     * 
      * @param value object to store in the node
      */
     public Node(T value) {
@@ -50,7 +53,7 @@ public class Node<T> {
         return value.toString();
     }
 
-    //This will let us abstract away getting the id of objects in the system.
+    // This will let us abstract away getting the id of objects in the system.
     public int getHash() {
         return value.hashCode();
     }

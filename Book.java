@@ -10,24 +10,23 @@ public class Book {
     private float height;
     private float depth;
 
-    public float getWidth(){
+    public float getWidth() {
         return this.width;
     }
 
-    public float getHeight(){
+    public float getHeight() {
         return this.height;
     }
 
-    public float getDepth(){
+    public float getDepth() {
         return this.depth;
     }
 
-    public String getTitle(){
+    public String getTitle() {
         return this.title;
     }
 
-
-    public Book(String title, float height, float width, float depth){
+    public Book(String title, float height, float width, float depth) {
         this.title = title;
         this.height = height;
         this.width = width;

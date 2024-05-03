@@ -4,26 +4,26 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 public class testShelve {
-    //Note, need to test and retrieve times for books n= 35,000 -> 1,500,000
+    // Note, need to test and retrieve times for books n= 35,000 -> 1,500,000
     @Test
     public void testBookCanFit() {
         Book book = new Book("", 10, 1, 9);
-        Shelf shelf = new Shelf("A", 20,11,10);
+        Shelf shelf = new Shelf("A", 20, 11, 10);
         assertTrue(shelf.bookCanFit(book));
     }
 
     @Test
     public void testBookCanNotFitHeight() {
         Book book = new Book("", 100, 1, 9);
-        Shelf shelf = new Shelf("a", 20,11,10);
+        Shelf shelf = new Shelf("a", 20, 11, 10);
         assertFalse(shelf.bookCanFit(book));
     }
 
     @Test
     public void testBookCanNotFitDepth() {
         Book book = new Book("", 10, 1, 90);
-        Shelf shelf = new Shelf("a", 20,11,10);
-      
+        Shelf shelf = new Shelf("a", 20, 11, 10);
+
         assertFalse(shelf.bookCanFit(book));
     }
 
@@ -43,7 +43,7 @@ public class testShelve {
         assertTrue(dll.getHead().getValue() == 1);
     }
 
-    //Test requires visual confirmation, refactor to be automated
+    // Test requires visual confirmation, refactor to be automated
     @Test
     public void testMergeSort() {
         System.out.println("Merge sort check of 100 random strings List before sort:");
@@ -58,15 +58,15 @@ public class testShelve {
     }
 
     @Test
-    public void testShelving(){
-        //make library
-        //create books
-        //sort books onto shelves
+    public void testShelving() {
+        // make library
+        // create books
+        // sort books onto shelves
     }
 
-    //TODO: refactor for automation
+    // TODO: refactor for automation
     @Test
-    public void testJoinWith(){
+    public void testJoinWith() {
         DLL<Integer> left = new DLL<Integer>();
         DLL<Integer> right = new DLL<Integer>();
         left.add(1);
@@ -81,16 +81,13 @@ public class testShelve {
     }
 
     @Test
-    public void testJoinWithHeadNull(){
+    public void testJoinWithHeadNull() {
         DLL<Integer> left = new DLL<Integer>();
         DLL<Integer> right = new DLL<Integer>();
         right.add(3);
         right.add(4);
         left.joinWith(right);
-        System.out.println(left.getTail());
         left.printAll();
-        System.out.println("Right: ");
         right.printAll();
-        System.out.println("end Right");
     }
 }
