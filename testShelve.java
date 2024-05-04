@@ -1,9 +1,24 @@
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Random;
+
 import org.junit.Test;
 
 public class testShelve {
+    Random r = new Random();
+
+    private float randomFloat(float min, float max){
+        return min + r.nextFloat() * (max-min);
+    }
+
+    private Book randomBook(){
+        return new Book(RandomString.randomString(6), randomFloat(17.0f, 29.0f), randomFloat(0.5f, 4.25f), randomFloat(10.0f, 20.0f));
+    }
+
+    private Shelf randomShelf(){
+        return new Shelf(RandomString.randomString(4), randomFloat(60.0f, 100.0f), randomFloat(24.0f, 40.0f), randomFloat(20.0f, 40.0f));
+    }
     // Note, need to test and retrieve times for books n= 35,000 -> 1,500,000
     @Test
     public void testBookCanFit() {
@@ -57,12 +72,6 @@ public class testShelve {
         dll.printAll();
     }
 
-    @Test
-    public void testShelving() {
-        // make library
-        // create books
-        // sort books onto shelves
-    }
 
     // TODO: refactor for automation
     @Test
@@ -110,6 +119,22 @@ public class testShelve {
         System.out.println("After move");
         Node<Book> bookNode = lib.uncategorizedBooks.getHead();
         lib.moveBookToOverSized(bookNode);
+        lib.printLibrary();
+    }
+
+    @Test
+    public void testShelving(){
+        Library lib = new Library();
+        for (int i = 0; i < 200; i++){
+            lib.addBook(randomBook());
+        }
+        for (int i = 0; i < 5; i++){
+            lib.addShelf(randomShelf());
+        }
+        System.out.println("=======Library before shelving =======");
+        lib.printLibrary();
+        lib.shelveBooks();
+        System.out.println(" ******** Library after shelving *********");
         lib.printLibrary();
     }
 }

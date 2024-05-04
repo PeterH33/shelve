@@ -26,6 +26,10 @@ public class Book {
         return this.title;
     }
 
+    public String toString(){
+        return (title + "W: " + width);
+    }
+
     public Book(String title, float height, float width, float depth) {
         this.title = title;
         this.height = height;

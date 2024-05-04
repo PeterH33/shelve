@@ -15,6 +15,10 @@ public class Shelf {
         this.availableWidth = width;
     }
 
+    public void removeSpaceFromShelf(Node<Book> book){
+        availableWidth -= book.getValue().getWidth();
+    }
+
     public void setFirstBook(Node<Book> book) {
         this.firstBook = book;
         if (lastBook == null) {

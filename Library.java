@@ -35,10 +35,9 @@ public class Library {
                 }
             }
             moveBookToShelf(currentBook);
+            currentShelf.getValue().removeSpaceFromShelf(currentBook);
             currentBook = nextBook;
         }
-        // When uncategorizedBooks or shelves has reached its end, the shelving has
-        // completed.
     }
 
     /**
@@ -48,6 +47,10 @@ public class Library {
      */
     public void addBook(Book book) {
         uncategorizedBooks.add(book);
+    }
+
+    public void addShelf(Shelf shelf){
+        shelves.add(shelf);
     }
 
     /**

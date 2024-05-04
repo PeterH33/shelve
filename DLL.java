@@ -1,11 +1,11 @@
 public class DLL<T> {
     private Node<T> head = null;
     private Node<T> tail = null;
-    private int size = 0;
+    // private int size = 0;
 
-    public boolean isEmpty() {
-        return size == 0;
-    }
+    // public boolean isEmpty() {
+    //     return size == 0;
+    // }
 
     public Node<T> getHead() {
         return this.head;
@@ -15,9 +15,9 @@ public class DLL<T> {
         return this.tail;
     }
 
-    public int getSize() {
-        return this.size;
-    }
+    // public int getSize() {
+    //     return this.size;
+    // }
 
     /**
      * Create a node, Add the input object to the node, and add node as to DLL as tail
@@ -27,7 +27,8 @@ public class DLL<T> {
     public void add(T input) {
         Node<T> node = new Node<T>(input);
         // O(1) appending node
-        if (size == 0) {
+        // if (size == 0) {
+        if (head == null){
             head = node;
             tail = node;
         } else {
@@ -35,7 +36,7 @@ public class DLL<T> {
             node.setPreviousNode(tail);
             tail = node;
         }
-        size++;
+        // size++;
     }
 
     /**
@@ -43,7 +44,8 @@ public class DLL<T> {
      * @param node
      */
     public void addNode(Node<T> node){
-        if (size == 0) {
+        // if (size == 0) {
+        if (head == null){
             head = node;
             tail = node;
         } else {
@@ -51,7 +53,7 @@ public class DLL<T> {
             node.setPreviousNode(tail);
             tail = node;
         }
-        size++;
+        // size++;
     }
 
     public void removeNode(Node<T> node){
@@ -75,7 +77,8 @@ public class DLL<T> {
             return;
         }
         Node<T> tempNode = head;
-        for (int i = 0; i < size; i++) {
+        while (tempNode != null){
+        // for (int i = 0; i < size; i++) {
             System.out.print(tempNode.toString() + ", ");
             tempNode = tempNode.getNext();
         }
@@ -111,17 +114,17 @@ public class DLL<T> {
             tail = otherDll.tail;
             otherDll.head = null;
             otherDll.tail = null;
-            size += otherDll.size;
+            // size += otherDll.size;
         } else {
             // join this.tail to other.head
             tail.setNext(otherDll.getHead());
             otherDll.head.setPreviousNode(tail);
             // redefine the tail to be for this and other to null
             tail = otherDll.tail;
-            size += otherDll.size;
+            // size += otherDll.size;
             otherDll.tail = null;
             otherDll.head = null;
-            otherDll.size = 0;
+            // otherDll.size = 0;
         }
     }
 
