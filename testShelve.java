@@ -16,6 +16,10 @@ public class testShelve {
         return new Book(RandomString.randomString(6), randomFloat(17.0f, 29.0f), randomFloat(0.5f, 4.25f), randomFloat(10.0f, 20.0f));
     }
 
+    private Book randomLARGEBook(){
+        return new Book(RandomString.randomString(6), randomFloat(170.0f, 290.0f), randomFloat(0.5f, 4.25f), randomFloat(10.0f, 20.0f));
+    }
+
     private Shelf randomShelf(){
         return new Shelf(RandomString.randomString(4), randomFloat(60.0f, 100.0f), randomFloat(24.0f, 40.0f), randomFloat(20.0f, 40.0f));
     }
@@ -128,7 +132,7 @@ public class testShelve {
         for (int i = 0; i < 200; i++){
             lib.addBook(randomBook());
         }
-        for (int i = 0; i < 5; i++){
+        for (int i = 0; i < 2; i++){
             lib.addShelf(randomShelf());
         }
         System.out.println("=======Library before shelving =======");

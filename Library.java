@@ -24,6 +24,7 @@ public class Library {
             // if book is too large, place it in oversized books
             if (!currentShelf.getValue().bookCanFit(currentBook.getValue())){
                 moveBookToOverSized(currentBook);
+                currentBook = nextBook;
                 continue;
             //Else see if the shelf is full, move to next shelf if full
             } else if (!currentShelf.getValue().spaceAvailableForBook(currentBook.getValue())){
