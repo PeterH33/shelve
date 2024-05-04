@@ -4,7 +4,7 @@ public class DLL<T> {
     // private int size = 0;
 
     // public boolean isEmpty() {
-    //     return size == 0;
+    // return size == 0;
     // }
 
     public Node<T> getHead() {
@@ -16,11 +16,12 @@ public class DLL<T> {
     }
 
     // public int getSize() {
-    //     return this.size;
+    // return this.size;
     // }
 
     /**
-     * Create a node, Add the input object to the node, and add node as to DLL as tail
+     * Create a node, Add the input object to the node, and add node as to DLL as
+     * tail
      * 
      * @param input object of type T stored in this list
      */
@@ -28,7 +29,7 @@ public class DLL<T> {
         Node<T> node = new Node<T>(input);
         // O(1) appending node
         // if (size == 0) {
-        if (head == null){
+        if (head == null) {
             head = node;
             tail = node;
         } else {
@@ -41,11 +42,12 @@ public class DLL<T> {
 
     /**
      * Add a node to the list
+     * 
      * @param node
      */
-    public void addNode(Node<T> node){
+    public void addNode(Node<T> node) {
         // if (size == 0) {
-        if (head == null){
+        if (head == null) {
             head = node;
             tail = node;
         } else {
@@ -56,29 +58,30 @@ public class DLL<T> {
         // size++;
     }
 
-    public void removeNode(Node<T> node){
+    public void removeNode(Node<T> node) {
         // if list empty, do nothing
-        if (head == null || node == null){return;}
-        //if node is only one in list
-        if (head == node){
+        if (head == null || node == null) {
+            return;
+        }
+        // if node is only one in list
+        if (head == node) {
             head = node.getNext();
         }
-        if (node.getNext() != null){
+        if (node.getNext() != null) {
             node.getNext().setPreviousNode(node.getPreviousNode());
         }
-        if (node.getPreviousNode() != null){
+        if (node.getPreviousNode() != null) {
             node.getPreviousNode().setNext(node.getNext());
         }
     }
-
 
     public void printAll() {
         if (head == null) {
             return;
         }
         Node<T> tempNode = head;
-        while (tempNode != null){
-        // for (int i = 0; i < size; i++) {
+        while (tempNode != null) {
+            // for (int i = 0; i < size; i++) {
             System.out.print(tempNode.toString() + ", ");
             tempNode = tempNode.getNext();
         }

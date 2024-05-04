@@ -15,7 +15,7 @@ public class Shelf {
         this.availableWidth = width;
     }
 
-    public void removeSpaceFromShelf(Node<Book> book){
+    public void removeSpaceFromShelf(Node<Book> book) {
         availableWidth -= book.getValue().getWidth();
     }
 

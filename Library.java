@@ -12,16 +12,16 @@ public class Library {
     private DLL<Shelf> shelves;
 
     public static void main(String[] args) {
-        
+
         int bookCount = args.length == 2 ? Integer.parseInt(args[0]) : 10000;
         int shelfCount = args.length == 2 ? Integer.parseInt(args[1]) : 100;
-        
+
         Library lib = new Library();
-        for (int i = 0; i < bookCount; i++){
+        for (int i = 0; i < bookCount; i++) {
             lib.addBook(randomBook());
         }
 
-        for (int i = 0; i < shelfCount; i++){
+        for (int i = 0; i < shelfCount; i++) {
             lib.addShelf(randomShelf());
         }
         System.out.println("=======Library before shelving =======");
@@ -30,20 +30,24 @@ public class Library {
         System.out.println(" ******** Library after shelving *********");
         // lib.printLibrary();
     }
+
     private static Random r = new Random();
-    private static float randomFloat(float min, float max){
-        return min + r.nextFloat() * (max-min);
+
+    private static float randomFloat(float min, float max) {
+        return min + r.nextFloat() * (max - min);
     }
 
-    private static Book randomBook(){
-        return new Book(RandomString.randomString(6), randomFloat(17.0f, 29.0f), randomFloat(0.5f, 4.25f), randomFloat(10.0f, 20.0f));
+    private static Book randomBook() {
+        return new Book(RandomString.randomString(6), randomFloat(17.0f, 29.0f), randomFloat(0.5f, 4.25f),
+                randomFloat(10.0f, 20.0f));
     }
 
-    private static Shelf randomShelf(){
-        return new Shelf(RandomString.randomString(4), randomFloat(60.0f, 100.0f), randomFloat(24.0f, 40.0f), randomFloat(20.0f, 40.0f));
+    private static Shelf randomShelf() {
+        return new Shelf(RandomString.randomString(4), randomFloat(60.0f, 100.0f), randomFloat(24.0f, 40.0f),
+                randomFloat(20.0f, 40.0f));
     }
 
-    public Library(){
+    public Library() {
         this.uncategorizedBooks = new DLL<Book>();
         this.shelvedBooks = new DLL<Book>();
         this.oversizedBooks = new DLL<Book>();
@@ -61,24 +65,26 @@ public class Library {
 
         long startTimeShelf = System.nanoTime();
         long endTimeShelf = System.nanoTime();
-        // go through books, placing on shelves until shelf is full then moving onto next shelf
+        // go through books, placing on shelves until shelf is full then moving onto
+        // next shelf
         Node<Book> currentBook = uncategorizedBooks.getHead();
         Node<Shelf> currentShelf = shelves.getHead();
-        while (currentBook != null){
+        while (currentBook != null) {
             Node<Book> nextBook = currentBook.getNext();
             // if book is too large, place it in oversized books
-            if (!currentShelf.getValue().bookCanFit(currentBook.getValue())){
+            if (!currentShelf.getValue().bookCanFit(currentBook.getValue())) {
                 moveBookToOverSized(currentBook);
                 currentBook = nextBook;
                 continue;
-            //Else see if the shelf is full, move to next shelf if full
-            } else if (!currentShelf.getValue().spaceAvailableForBook(currentBook.getValue())){
-                if (currentShelf.getNext() != null){
+                // Else see if the shelf is full, move to next shelf if full
+            } else if (!currentShelf.getValue().spaceAvailableForBook(currentBook.getValue())) {
+                if (currentShelf.getNext() != null) {
                     currentShelf = currentShelf.getNext();
                 } else {
-                    //out of shelves, all remaining books remain uncategorized
+                    // out of shelves, all remaining books remain uncategorized
                     endTimeShelf = System.nanoTime();
-                    printTimes(startTimePileBooks, endTimePileBooks, startTimeSort, endTimeSort, startTimeShelf, endTimeShelf);
+                    printTimes(startTimePileBooks, endTimePileBooks, startTimeSort, endTimeSort, startTimeShelf,
+                            endTimeShelf);
                     return;
                 }
             }
@@ -90,10 +96,11 @@ public class Library {
         printTimes(startTimePileBooks, endTimePileBooks, startTimeSort, endTimeSort, startTimeShelf, endTimeShelf);
     }
 
-    private void printTimes(long startTimePileBooks, long endTimePileBooks, long startTimeSort, long endTimeSort, long startTimeShelf, long endTimeShelf){
-        System.out.println("Elapsed Time mS Pile Books: " + ((endTimePileBooks - startTimePileBooks)/1000000));
-        System.out.println("Elapsed Time mS Sort Books: " + ((endTimeSort - startTimeSort)/1000000));
-        System.out.println("Elapsed Time mS Categorize Books: " + ((endTimeShelf - startTimeShelf)/1000000));
+    private void printTimes(long startTimePileBooks, long endTimePileBooks, long startTimeSort, long endTimeSort,
+            long startTimeShelf, long endTimeShelf) {
+        System.out.println("Elapsed Time mS Pile Books: " + ((endTimePileBooks - startTimePileBooks) / 1000000));
+        System.out.println("Elapsed Time mS Sort Books: " + ((endTimeSort - startTimeSort) / 1000000));
+        System.out.println("Elapsed Time mS Categorize Books: " + ((endTimeShelf - startTimeShelf) / 1000000));
     }
 
     /**
@@ -105,7 +112,7 @@ public class Library {
         uncategorizedBooks.add(book);
     }
 
-    public void addShelf(Shelf shelf){
+    public void addShelf(Shelf shelf) {
         shelves.add(shelf);
     }
 
@@ -117,12 +124,12 @@ public class Library {
         uncategorizedBooks.joinWith(oversizedBooks);
     }
 
-    public void moveBookToShelf(Node<Book> book){
+    public void moveBookToShelf(Node<Book> book) {
         uncategorizedBooks.removeNode(book);
         shelvedBooks.addNode(book);
     }
 
-    public void moveBookToOverSized(Node<Book> book){
+    public void moveBookToOverSized(Node<Book> book) {
         uncategorizedBooks.removeNode(book);
         oversizedBooks.addNode(book);
     }
@@ -135,6 +142,5 @@ public class Library {
         System.out.println("OverSized books: ");
         oversizedBooks.printAll();
     }
-
 
 }

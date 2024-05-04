@@ -8,21 +8,25 @@ import org.junit.Test;
 public class testShelve {
     Random r = new Random();
 
-    private float randomFloat(float min, float max){
-        return min + r.nextFloat() * (max-min);
+    private float randomFloat(float min, float max) {
+        return min + r.nextFloat() * (max - min);
     }
 
-    private Book randomBook(){
-        return new Book(RandomString.randomString(6), randomFloat(17.0f, 29.0f), randomFloat(0.5f, 4.25f), randomFloat(10.0f, 20.0f));
+    private Book randomBook() {
+        return new Book(RandomString.randomString(6), randomFloat(17.0f, 29.0f), randomFloat(0.5f, 4.25f),
+                randomFloat(10.0f, 20.0f));
     }
 
-    private Book randomLARGEBook(){
-        return new Book(RandomString.randomString(6), randomFloat(170.0f, 290.0f), randomFloat(0.5f, 4.25f), randomFloat(10.0f, 20.0f));
+    private Book randomLARGEBook() {
+        return new Book(RandomString.randomString(6), randomFloat(170.0f, 290.0f), randomFloat(0.5f, 4.25f),
+                randomFloat(10.0f, 20.0f));
     }
 
-    private Shelf randomShelf(){
-        return new Shelf(RandomString.randomString(4), randomFloat(60.0f, 100.0f), randomFloat(24.0f, 40.0f), randomFloat(20.0f, 40.0f));
+    private Shelf randomShelf() {
+        return new Shelf(RandomString.randomString(4), randomFloat(60.0f, 100.0f), randomFloat(24.0f, 40.0f),
+                randomFloat(20.0f, 40.0f));
     }
+
     // Note, need to test and retrieve times for books n= 35,000 -> 1,500,000
     @Test
     public void testBookCanFit() {
@@ -76,7 +80,6 @@ public class testShelve {
         dll.printAll();
     }
 
-
     // TODO: refactor for automation
     @Test
     public void testJoinWith() {
@@ -104,18 +107,18 @@ public class testShelve {
         right.printAll();
     }
 
-    //Refactor test for automation
+    // Refactor test for automation
     @Test
-    public void testLibraryAddBook(){
+    public void testLibraryAddBook() {
         Library lib = new Library();
         Book book = new Book("A Book", 10, 10, 10);
         lib.addBook(book);
         lib.printLibrary();
     }
 
-    //bad test, refactor for automation
+    // bad test, refactor for automation
     @Test
-    public void testMoveBookToShelves(){
+    public void testMoveBookToShelves() {
         Library lib = new Library();
         Book book = new Book("A Book", 10, 10, 10);
         lib.addBook(book);
@@ -126,15 +129,16 @@ public class testShelve {
         lib.printLibrary();
     }
 
-    //This is the test to run to check shelving, it seems to be an error in the merge step resulting in stack overflow when we are at 20,000 books
+    // This is the test to run to check shelving, it seems to be an error in the
+    // merge step resulting in stack overflow when we are at 20,000 books
     @Test
-    public void testShelving(){
+    public void testShelving() {
         Library lib = new Library();
-        for (int i = 0; i < 40000; i++){
+        for (int i = 0; i < 40000; i++) {
             lib.addBook(randomBook());
         }
 
-        for (int i = 0; i < 5; i++){
+        for (int i = 0; i < 5; i++) {
             lib.addShelf(randomShelf());
         }
         System.out.println("=======Library before shelving =======");
@@ -145,9 +149,9 @@ public class testShelve {
     }
 
     @Test
-    public void testRandomBook(){
+    public void testRandomBook() {
         Book book = randomBook();
-        System.out.println ("Title: " + book.getTitle());
+        System.out.println("Title: " + book.getTitle());
         System.out.println("Height: " + book.getHeight());
         System.out.println("Width: " + book.getWidth());
         System.out.println("Depth: " + book.getDepth());

@@ -26,7 +26,7 @@ public class Book {
         return this.title;
     }
 
-    public String toString(){
+    public String toString() {
         return (title);
     }
 
