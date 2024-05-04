@@ -126,19 +126,29 @@ public class testShelve {
         lib.printLibrary();
     }
 
+    //This is the test to run to check shelving, it seems to be an error in the merge step resulting in stack overflow when we are at 20,000 books
     @Test
     public void testShelving(){
         Library lib = new Library();
-        for (int i = 0; i < 200; i++){
+        for (int i = 0; i < 20000; i++){
             lib.addBook(randomBook());
         }
-        for (int i = 0; i < 2; i++){
+        for (int i = 0; i < 5; i++){
             lib.addShelf(randomShelf());
         }
         System.out.println("=======Library before shelving =======");
-        lib.printLibrary();
+        // lib.printLibrary();
         lib.shelveBooks();
         System.out.println(" ******** Library after shelving *********");
-        lib.printLibrary();
+        // lib.printLibrary();
+    }
+
+    @Test
+    public void testRandomBook(){
+        Book book = randomBook();
+        System.out.println ("Title: " + book.getTitle());
+        System.out.println("Height: " + book.getHeight());
+        System.out.println("Width: " + book.getWidth());
+        System.out.println("Depth: " + book.getDepth());
     }
 }
