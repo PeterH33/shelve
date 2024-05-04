@@ -20,7 +20,7 @@ public class DLL<T> {
     }
 
     /**
-     * Add the input object to the list as the tail
+     * Create a node, Add the input object to the node, and add node as to DLL as tail
      * 
      * @param input object of type T stored in this list
      */
@@ -37,6 +37,38 @@ public class DLL<T> {
         }
         size++;
     }
+
+    /**
+     * Add a node to the list
+     * @param node
+     */
+    public void addNode(Node<T> node){
+        if (size == 0) {
+            head = node;
+            tail = node;
+        } else {
+            tail.setNext(node);
+            node.setPreviousNode(tail);
+            tail = node;
+        }
+        size++;
+    }
+
+    public void removeNode(Node<T> node){
+        // if list empty, do nothing
+        if (head == null || node == null){return;}
+        //if node is only one in list
+        if (head == node){
+            head = node.getNext();
+        }
+        if (node.getNext() != null){
+            node.getNext().setPreviousNode(node.getPreviousNode());
+        }
+        if (node.getPreviousNode() != null){
+            node.getPreviousNode().setNext(node.getNext());
+        }
+    }
+
 
     public void printAll() {
         if (head == null) {

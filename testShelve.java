@@ -90,4 +90,26 @@ public class testShelve {
         left.printAll();
         right.printAll();
     }
+
+    //Refactor test for automation
+    @Test
+    public void testLibraryAddBook(){
+        Library lib = new Library();
+        Book book = new Book("A Book", 10, 10, 10);
+        lib.addBook(book);
+        lib.printLibrary();
+    }
+
+    //bad test, refactor for automation
+    @Test
+    public void testMoveBookToShelves(){
+        Library lib = new Library();
+        Book book = new Book("A Book", 10, 10, 10);
+        lib.addBook(book);
+        lib.printLibrary();
+        System.out.println("After move");
+        Node<Book> bookNode = lib.uncategorizedBooks.getHead();
+        lib.moveBookToOverSized(bookNode);
+        lib.printLibrary();
+    }
 }

@@ -1,8 +1,15 @@
 public class Library {
-    private DLL<Book> uncategorizedBooks;
+    public DLL<Book> uncategorizedBooks;
     private DLL<Book> shelvedBooks;
     private DLL<Book> oversizedBooks;
     private DLL<Shelf> shelves;
+
+    public Library(){
+        this.uncategorizedBooks = new DLL<Book>();
+        this.shelvedBooks = new DLL<Book>();
+        this.oversizedBooks = new DLL<Book>();
+        this.shelves = new DLL<Shelf>();
+    }
 
     public void shelveBooks() {
         // books must be sorted before shelving
@@ -30,7 +37,22 @@ public class Library {
         uncategorizedBooks.joinWith(oversizedBooks);
     }
 
-    public void printLibrary() {
+    public void moveBookToShelf(Node<Book> book){
+        uncategorizedBooks.removeNode(book);
+        shelvedBooks.addNode(book);
+    }
 
+    public void moveBookToOverSized(Node<Book> book){
+        uncategorizedBooks.removeNode(book);
+        oversizedBooks.addNode(book);
+    }
+
+    public void printLibrary() {
+        System.out.println("Uncategorized books: ");
+        uncategorizedBooks.printAll();
+        System.out.println("Shelved Books: ");
+        shelvedBooks.printAll();
+        System.out.println("OverSized books: ");
+        oversizedBooks.printAll();
     }
 }
