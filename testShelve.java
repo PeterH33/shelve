@@ -73,7 +73,7 @@ public class testShelve {
         left.add(2);
         right.add(3);
         right.add(4);
-        left.add(5);
+        left.add(2);
         left.joinWith(right);
         System.out.println(left.getTail());
         left.printAll();

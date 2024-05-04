@@ -13,9 +13,30 @@ public class Library {
 
     public void shelveBooks() {
         // books must be sorted before shelving
-        // go through books, placing on shelves until shelf is full then moving onto
-        // next shelf
-        // if book is too large, place it in oversized books
+        pileBooks();
+        uncategorizedBooks.sort();
+
+        // go through books, placing on shelves until shelf is full then moving onto next shelf
+        Node<Book> currentBook = uncategorizedBooks.getHead();
+        Node<Shelf> currentShelf = shelves.getHead();
+        while (currentBook != null){
+            Node<Book> nextBook = currentBook.getNext();
+            // if book is too large, place it in oversized books
+            if (!currentShelf.getValue().bookCanFit(currentBook.getValue())){
+                moveBookToOverSized(currentBook);
+                continue;
+            //Else see if the shelf is full, move to next shelf if full
+            } else if (!currentShelf.getValue().spaceAvailableForBook(currentBook.getValue())){
+                if (currentShelf.getNext() != null){
+                    currentShelf = currentShelf.getNext();
+                } else {
+                    //out of shelves, all remaining books remain uncategorized
+                    return;
+                }
+            }
+            moveBookToShelf(currentBook);
+            currentBook = nextBook;
+        }
         // When uncategorizedBooks or shelves has reached its end, the shelving has
         // completed.
     }
