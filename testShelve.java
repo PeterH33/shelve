@@ -130,9 +130,10 @@ public class testShelve {
     @Test
     public void testShelving(){
         Library lib = new Library();
-        for (int i = 0; i < 20000; i++){
+        for (int i = 0; i < 40000; i++){
             lib.addBook(randomBook());
         }
+
         for (int i = 0; i < 5; i++){
             lib.addShelf(randomShelf());
         }

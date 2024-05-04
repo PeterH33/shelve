@@ -27,7 +27,7 @@ public class Book {
     }
 
     public String toString(){
-        return (title + " W:" + (int)width + " H:" + (int)height + " D:" + (int)depth);
+        return (title);
     }
 
     public Book(String title, float height, float width, float depth) {

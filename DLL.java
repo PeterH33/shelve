@@ -105,10 +105,10 @@ public class DLL<T> {
      */
     public void joinWith(DLL<T> otherDll) {
         if (otherDll.head == null) {
-            System.out.println("if");
+            // System.out.println("if");
             // do nothing, no join to occur
         } else if (head == null) {
-            System.out.println("else if");
+            // System.out.println("else if");
             // set the this head and tail to be otherDLL and then clear other
             head = otherDll.head;
             tail = otherDll.tail;
