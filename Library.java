@@ -1,5 +1,10 @@
 import java.util.Random;
 
+/**
+ * Library class for Doubly Linked List experimental paper
+ * 
+ * @author Peter Hartnett
+ */
 public class Library {
     public DLL<Book> uncategorizedBooks;
     private DLL<Book> shelvedBooks;
@@ -7,13 +12,16 @@ public class Library {
     private DLL<Shelf> shelves;
 
     public static void main(String[] args) {
-        int bookCount = Integer.parseInt(args[0]);
+        
+        int bookCount = args.length == 2 ? Integer.parseInt(args[0]) : 10000;
+        int shelfCount = args.length == 2 ? Integer.parseInt(args[1]) : 100;
+        
         Library lib = new Library();
         for (int i = 0; i < bookCount; i++){
             lib.addBook(randomBook());
         }
 
-        for (int i = 0; i < 5; i++){
+        for (int i = 0; i < shelfCount; i++){
             lib.addShelf(randomShelf());
         }
         System.out.println("=======Library before shelving =======");
