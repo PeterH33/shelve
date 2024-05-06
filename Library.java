@@ -43,7 +43,7 @@ public class Library {
     }
 
     private static Shelf randomShelf() {
-        return new Shelf(RandomString.randomString(4), randomFloat(60.0f, 100.0f), randomFloat(24.0f, 40.0f),
+        return new Shelf(RandomString.randomString(4), 1000000, randomFloat(24.0f, 40.0f),
                 randomFloat(20.0f, 40.0f));
     }
 
