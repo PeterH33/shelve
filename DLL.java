@@ -1,11 +1,6 @@
 public class DLL<T> {
     private Node<T> head = null;
     private Node<T> tail = null;
-    // private int size = 0;
-
-    // public boolean isEmpty() {
-    // return size == 0;
-    // }
 
     public Node<T> getHead() {
         return this.head;
@@ -15,20 +10,15 @@ public class DLL<T> {
         return this.tail;
     }
 
-    // public int getSize() {
-    // return this.size;
-    // }
-
     /**
      * Create a node, Add the input object to the node, and add node as to DLL as
-     * tail
+     * tail Used for rapid generation of nodes by only providing a value
      * 
      * @param input object of type T stored in this list
      */
     public void add(T input) {
         Node<T> node = new Node<T>(input);
         // O(1) appending node
-        // if (size == 0) {
         if (head == null) {
             head = node;
             tail = node;
@@ -37,7 +27,6 @@ public class DLL<T> {
             node.setPreviousNode(tail);
             tail = node;
         }
-        // size++;
     }
 
     /**
@@ -46,7 +35,6 @@ public class DLL<T> {
      * @param node
      */
     public void addNode(Node<T> node) {
-        // if (size == 0) {
         if (head == null) {
             head = node;
             tail = node;
@@ -55,7 +43,6 @@ public class DLL<T> {
             node.setPreviousNode(tail);
             tail = node;
         }
-        // size++;
     }
 
     public void removeNode(Node<T> node) {
@@ -63,7 +50,7 @@ public class DLL<T> {
         if (head == null || node == null) {
             return;
         }
-        // if node is only one in list
+        // if node is head, just remove the head
         if (head == node) {
             head = node.getNext();
         }
